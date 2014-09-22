@@ -1,0 +1,298 @@
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: none
+}
+
+body{
+    background-color: #f7f7f0
+}
+
+li{
+    list-style-type: none;
+    margin: 0; padding: 0;
+}
+
+ul{
+    margin: 0; padding: 0;
+}
+
+/*for nav d0d0d0 or 35394b  for sidebar #303030*/ 
+.navbar-default{
+    background-color: #fff;
+}
+.navbar{
+    border-color: #e0e0e0;
+    border-width: medium medium 2px;
+    border-radius: 0;
+    border-style: none none solid;
+}
+
+.widget .widget-head {
+    background: none repeat scroll 0 0 #f9f9f9;
+    border-bottom: 1px solid #efefef;
+    height: 35px;
+    line-height: 35px;
+    overflow: hidden;
+    padding: 0 10px 0 0;
+    position: relative;
+    
+
+}
+
+.widget .widget-head h5{
+    display: inline;
+    font-size: 15px;
+    line-height: 18px;
+    margin: 0;
+    min-height: 19px;
+    min-width: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+
+.widget {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #efefef;
+    margin: 0 auto 10px;
+    position: relative;
+}
+
+.innerAll {
+    padding: 10px;
+    position: relative;
+}
+
+.margin-none {
+    margin: 0 ;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #efefef !important;
+}
+
+.bg-gray {
+    background: none repeat scroll 0 0 #f9f9f9;
+}
+
+.widget .widget-body {
+    padding-top: 10px;
+    /* padding-bottom: 10px;    */
+}
+
+/* jquery ui css override*/
+
+.tasks-state-highlight{
+    border: 1px dashed #b7b7b8;
+    /*height: 1.5em;*/ 
+    line-height: 1.2em;
+    margin-bottom: 7px;
+    padding-left: 7px;
+    padding-right: 7px;    
+}
+
+.list-container>.tasks-state-highlight{
+    /*width: 300px;   */
+}
+.elem-dragged{
+    transform: rotate(4deg);    
+}
+
+.list{
+    padding: 5px;
+
+}
+
+.board {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.col-xs-3 {
+    width:  270px;
+}
+
+.widget ul li.row{
+    /*margin: 0px;*/
+}
+
+
+.dragable-object{
+    cursor: -webkit-grab; cursor: -moz-grab;
+}
+.dragable-object:active{
+    cursor: -webkit-grabbing; cursor: -moz-grabbing;
+}
+
+.card .col-sm-6{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sortable-card{
+    margin-left: 7px;
+    margin-right: 7px;
+    min-height: 5px;
+}
+
+/* with border */
+.card{
+    border: 1px solid #f0f0f0;
+    padding-left: 7px;
+    padding-right: 7px;    
+    padding-top: 4px;
+    padding-bottom: 4px;
+    
+    margin: 0px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    
+}
+.card:hover{
+    background-color: #f9f9f9;
+}
+
+.addcardButton{    
+    padding-left: 14px;
+    
+    padding-left: 14px;
+    /*padding-bottom: 5px;
+    padding-top: 5px;*/    
+    background-color: #f9f9f9;
+    color: #888;
+}
+
+.addcardButton span{
+    font-size: 15px;
+    margin-right: 1px;
+}
+.addcardButton:hover{
+    background-color: fbfbf9;
+    cursor: pointer;
+}
+/* Without border
+
+.card{
+padding-left: 7px;
+padding-right: 7px;    
+background-color: #fafafa;
+}
+.card:hover{
+background-color: #fefefe;
+}*/
+
+.list-adder{
+    cursor: pointer;
+}
+
+.fa{
+    line-height: 35px;
+}
+
+.list-adder .widget .widget-head:hover{
+    background-color: fbfbf9;
+}
+
+.addcardWidget{
+    padding: 3px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border: 1px solid #f0f0f0;
+    border-radius: 3px;
+    margin-bottom: 3px;
+
+}
+
+.full-width{
+    width: 100%;
+}
+
+.widgetButton{
+    height: 30px; line-height: 0; margin-top: 3px;
+}
+
+.card div{
+    overflow: auto;
+    max-height: 150px;
+}
+
+.label-red{
+    border-top: 3px solid #ef7777;
+
+}
+
+.label-green{
+    border-top: 3px solid #77ef77;
+}
+
+.label-blue{
+    border-top: 3px solid #7777ef;
+}
+
+.label-yellow{
+    border-top: 3px solid #efef77;
+}
+
+.label-orange{
+    border-top: 3px solid #ef9811;
+
+}
+.label-purple{
+    border-top: 3px solid #ef55ef;
+}
+
+.login-box {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    padding: 25px;
+    text-align: left;
+    width: 100%;
+}
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+.input-group-addon i {
+    min-width: 12px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.login-box-width{
+    width: 400px !important;    
+}
+
+.login-box .title{
+    font-size: 1.2em;
+    color: #777777;
+}
+
+.board-block{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    margin: 5px;
+    height: 84px;
+    margin: 0 16px 16px 0;
+    line-height: 22px;
+    border-radius: 4px;
+}
+
+.board-block:hover {
+    background-color: #fbfbfb;
+}
+
+.navbar-brand {
+    padding-top: 8px;
+    
+}
+.navbar-nav > li > a {
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
