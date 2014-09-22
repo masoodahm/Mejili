@@ -29,10 +29,10 @@ class UserController extends BaseController {
             ));
         }
         catch(UserNotFoundException $e){
-
+            //Todo: show an error on the screen for user not found
         }
         catch(UserPasswordIncorrectException $e){
-
+            //Todo: show an error on the screen for incorrect password
         }
         
         return Redirect::route('boards');

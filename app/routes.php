@@ -33,12 +33,8 @@ Route::group(['before' => 'auth'], function()
     Route::group(['prefix' => '/api'], function(){
         
         Route::post('b/view_model', ['as'=>'api_get_view_model' ,'uses'=>'BoardController@getViewModel']);
-        // only for development
-        Route::get('b/view_model', ['as'=>'api_get_view_model' ,'uses'=>'BoardController@getViewModel']);
         
         Route::post('b/list/add_list', ['as'=>'api_add_list' ,'uses'=>'ListController@addList']);
-        
-        //Route::post('gettasks', ['as'=>'api_get_tasks' ,'uses'=>'CardController@getTasks']);    
         
         Route::post('b/list/card/add_card', ['as'=>'api_get_add_card' ,'uses'=>'CardController@addCard']);
                 
@@ -46,6 +42,8 @@ Route::group(['before' => 'auth'], function()
         
         Route::post('b/list/updatePosition', 'ListController@updatePosition');
         
+        // only for development
+        // Route::get('b/view_model', ['as'=>'api_get_view_model' ,'uses'=>'BoardController@getViewModel']);
         
     });
 });

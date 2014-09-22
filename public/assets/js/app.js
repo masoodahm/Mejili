@@ -1,8 +1,11 @@
 // Only for Development
-var serverRoot = 'http://localhost/mejili/public';
+//var serverRoot = 'http://localhost/Mejili/public';
 //==================================================
 
+var serverRoot = '';
+
 var self;
+
 window.Mejili = {
     initialize : function(){
         self = this;
@@ -75,8 +78,6 @@ window.Mejili = {
                 wHead.onblur = self.hideListAdder;
                 $('.list-adder .widget').append(wHead);
                 wHead.style.padding = '3px';
-
-
             }
             else{
                 addListWidget.style.display = 'block';
@@ -344,11 +345,7 @@ ko.bindingHandlers.uiSortableLists = {
 
                 var moveListSrc = listParent.splice(oldIndex,1)[0];
                 listParent.splice(newIndex, 0, moveListSrc);
-                
-                
-                
                 var b = document.getElementById('b').value;
-                
                 $.ajax(serverRoot+'/api/b/list/updatePosition', {
                     data : 'b=' + b + '&np=' + newIndex + '&lid=' + moveListSrc.id(),
                     type: "post"
@@ -380,5 +377,3 @@ $(document).ready(function(){
     window.onresize = Mejili.onWindowResize;    
 
 });
-
-

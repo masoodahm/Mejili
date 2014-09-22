@@ -13,8 +13,6 @@ class ListController extends BaseController {
         $maxPos = $board->lists()->max('position');
         $list->position = $maxPos;
         $board->lists()->save($list);
-        
-        
         $response['id'] = $list->id;
         
         // Todo: first make sure the list was added.
