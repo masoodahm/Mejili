@@ -11,7 +11,7 @@ Demo
 To be available soon:
 
 
-[![Screenshot](/public/assets/images/screenshot.png)]
+![Screenshot](/public/assets/images/screenshot.png)
 
 License
 -------
