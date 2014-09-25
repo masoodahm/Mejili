@@ -1,8 +1,8 @@
 // Only for Development
-//var serverRoot = 'http://localhost/Mejili/public';
+var serverRoot = 'http://localhost/Mejili/public';
 //==================================================
 
-var serverRoot = '';
+//var serverRoot = '';
 
 var self;
 
@@ -136,18 +136,27 @@ window.Mejili = {
 
             var addCardWidgetExists = $(this).parent().children().hasClass('addcardWidget');
             $(this).css('display', 'none');
-
-
+            
+            // hide all other card adder widgets.                        
+            
             if(!addCardWidgetExists){
                 var addCardWidget = document.createElement('div');
                 addCardWidget.className = 'row addcardWidget';
                 addCardWidget.id = 'addCardWidget';
+
 
                 var cardDescription = document.createElement('textarea');
                 cardDescription.className = 'full-width';
                 cardDescription.id = 'cardDescription';
 
                 cardDescription.setAttribute('data-bind', 'text: task');
+
+                cardDescription.onkeydown = function(event){
+                    var keyCode = ('which' in event) ? event.which : event.keyCode;
+                    if(keyCode == 27){
+                        self.hideCardAdderWidget($(this));   
+                    }
+                }
 
                 var btnContainer = document.createElement('div');
                 var btnSave = document.createElement('button');
@@ -160,14 +169,11 @@ window.Mejili = {
                 btnCancel.innerHTML = 'Cancel';
                 btnCancel.style.marginLeft = '3px';
                 btnCancel.onclick = self.cancelCardWidgetAdder;
-
+                
                 btnContainer.appendChild(btnSave);
                 btnContainer.appendChild(btnCancel);
-
-
                 addCardWidget.appendChild(cardDescription);
                 addCardWidget.appendChild(btnContainer);
-
                 $(this).before(addCardWidget);
                 cardDescription.focus();
             }
@@ -184,7 +190,7 @@ window.Mejili = {
         self.hideCardAdderWidget($(this));
     },
 
-    hideCardAdderWidget : function(context){
+    hideCardAdderWidget : function(context){        
         var addCardWidget = $('.addcardWidget').has(context);
         addCardWidget.parent().find('.addcardButton').css('display', 'block');   
         var cardDescription = addCardWidget.find('#cardDescription');
@@ -375,5 +381,5 @@ Mejili.ListViewModel = function (){
 $(document).ready(function(){
     Mejili.initialize();
     window.onresize = Mejili.onWindowResize;    
-
+    //$('#pwdModal').modal(); 
 });

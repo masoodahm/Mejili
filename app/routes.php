@@ -11,28 +11,30 @@
 |
 */
 
-Route::get('/', ['as'=> 'home', 'uses'=> 'HomeController@showWelcome']);
+Route::get('/', ['as'=> 'home', 'uses'=> 'Mejili\Content\Controllers\HomeController@showWelcome']);
 
 Route::group(['before' => 'guest'], function()
 {
-    Route::get('login', ['as'=>'login' ,'uses'=>'UserController@showLoginPage']);
+    Route::get('login', ['as'=>'login' ,'uses'=>'Mejili\Auth\Controllers\AuthController@showLoginPage']);
 
-    Route::post('login', ['as'=>'login' ,'uses'=>'UserController@login']);
+    Route::post('login', ['as'=>'login' ,'uses'=>'Mejili\Auth\Controllers\AuthController@login']);
 });
 
 
 Route::group(['before' => 'auth'], function()
 {
-    Route::get('b/{id}', ['as'=>'board' ,'uses'=>'BoardController@index']);
+    Route::get('b/{id}', ['as'=>'board' ,'uses'=>'Mejili\Core\Controllers\BoardController@index']);
 
-    Route::get('boards', ['as'=>'boards' ,'uses'=>'BoardController@listBoards']);
+    Route::get('boards', ['as'=>'boards' ,'uses'=>'Mejili\Core\Controllers\BoardController@listBoards']);
 
-    Route::post('addboard', ['as'=>'addboard' ,'uses'=>'BoardController@addBoard']);
+    Route::post('addboard', ['as'=>'addboard' ,'uses'=>'Mejili\Core\Controllers\BoardController@addBoard']);
+    
+    Route::get('logout', [ 'as'=>'logout' , 'uses'=>'Mejili\Auth\Controllers\AuthController@logout']);
     
     // Access api routes
     Route::group(['prefix' => '/api'], function(){
         
-        Route::post('b/view_model', ['as'=>'api_get_view_model' ,'uses'=>'BoardController@getViewModel']);
+        Route::post('b/view_model', ['as'=>'api_get_view_model' ,'uses'=>'Mejili\Core\Controllers\BoardController@getViewModel']);
         
         Route::post('b/list/add_list', ['as'=>'api_add_list' ,'uses'=>'ListController@addList']);
         

@@ -1,6 +1,10 @@
 <?php
 
-class UserController extends BaseController {
+namespace Mejili\Auth\Controllers;
+
+use Redirect, View, Input;
+
+class AuthController extends \BaseController {
 
     /*
 	|--------------------------------------------------------------------------
@@ -14,7 +18,7 @@ class UserController extends BaseController {
 
     public function showLoginPage() {
 
-        return View::make('users.login');
+        return View::make('auth::users.login');
     }
 
     public function login(){
@@ -36,6 +40,11 @@ class UserController extends BaseController {
         }
         
         return Redirect::route('boards');
+    }
+    
+    public function logout(){
+        Auth::logout();
+        return Redirect::route('home');
     }
 
 }

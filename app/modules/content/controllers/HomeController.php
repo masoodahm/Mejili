@@ -1,6 +1,10 @@
 <?php
 
-class HomeController extends BaseController {
+
+namespace Mejili\Content\Controllers;
+
+use Redirect;
+class HomeController extends \BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -17,7 +21,7 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		//return View::make('hello');
+		//return \View::make('content::hello');
         // for testing only done temporarily
         
         return Redirect::route('boards');

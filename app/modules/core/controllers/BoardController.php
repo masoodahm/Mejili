@@ -1,10 +1,13 @@
 <?php
 
-class BoardController extends BaseController {
+namespace Mejili\Core\Controllers;
+
+use View, Auth, Redirect, Input, Board, Response;
+class BoardController extends \BaseController {
 
     public function index($id){
         $data['id'] = $id;
-        return View::make('users.board', $data);
+        return View::make('core::users.board', $data);
     }
 
     public function listBoards(){
@@ -12,7 +15,7 @@ class BoardController extends BaseController {
         $user = Auth::user();
         $boards = $user->boards;
         $data['boards'] = $boards;
-        return View::make('users.boards-list', $data);
+        return View::make('core::users.boards-list', $data);
     }
 
     public function addBoard(){
