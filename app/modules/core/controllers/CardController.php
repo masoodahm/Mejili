@@ -1,5 +1,12 @@
 <?php
 
+namespace Mejili\Core\Controllers;
+
+use Input, Response;
+use Mejili\Core\Controllers\BaseController;
+use Mejili\Core\Models\Card;
+use Mejili\Core\Models\CardList;
+
 class CardController extends BaseController {
     
     public function addCard(){        

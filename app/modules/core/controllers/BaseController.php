@@ -1,5 +1,9 @@
 <?php
 
+namespace Mejili\Core\Controllers;
+
+use Controller;
+
 class BaseController extends Controller {
 
 	/**

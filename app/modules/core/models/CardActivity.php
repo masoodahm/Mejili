@@ -1,5 +1,9 @@
 <?php
 
+namespace Mejili\Core\Models;
+
+use Eloquent;
+
 class CardActivity extends Eloquent {
     
     protected $table = 'card_activities';

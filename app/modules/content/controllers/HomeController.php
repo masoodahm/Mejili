@@ -4,7 +4,9 @@
 namespace Mejili\Content\Controllers;
 
 use Redirect;
-class HomeController extends \BaseController {
+use Mejili\Core\Controllers\BaseController;
+
+class HomeController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------

@@ -1,5 +1,9 @@
 <?php
 
+namespace Mejili\Core\Models;
+
+use Eloquent;
+
 class CardAttachment extends Eloquent {
     
     protected $table = 'card_attachments';

@@ -1,5 +1,9 @@
 <?php
 
+namespace Mejili\Core\Models;
+
+use Eloquent;
+
 class CardList extends Eloquent {
     
     protected $table = 'lists';

@@ -3,12 +3,13 @@
 namespace Mejili\Auth\Controllers;
 
 use Redirect, View, Input, Auth;
+use Mejili\Core\Controllers\BaseController;
 
-class AuthController extends \BaseController {
+class AuthController extends BaseController {
 
     /*
 	|--------------------------------------------------------------------------
-	| User Controller
+	| Auth Controller
 	|--------------------------------------------------------------------------
 	|
 	| This is a users controller responsible for creating, signing in and

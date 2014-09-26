@@ -1,5 +1,9 @@
 <?php
 
+namespace Mejili\Core\Models;
+
+use Eloquent;
+
 class Board extends Eloquent{
     
     protected $table = 'boards';

@@ -2,8 +2,11 @@
 
 namespace Mejili\Core\Controllers;
 
-use View, Auth, Redirect, Input, Board, Response;
-class BoardController extends \BaseController {
+use View, Auth, Redirect, Input, Response;
+use Mejili\Core\Controllers\BaseController;
+use Mejili\Core\Models\Board;
+
+class BoardController extends BaseController {
 
     public function index($id){
         $data['id'] = $id;

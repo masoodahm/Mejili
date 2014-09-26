@@ -1,5 +1,7 @@
 <?php
 
+namespace Mejili\Core\Models;
+
 use Toddish\Verify\Models\User as VerifyUser;
 
 class User extends VerifyUser {

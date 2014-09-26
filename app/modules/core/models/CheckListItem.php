@@ -1,5 +1,9 @@
 <?php
 
+namespace Mejili\Core\Models;
+
+use Eloquent;
+
 class CheckListItem extends Eloquent {
     
     protected $table = 'checklist_items';
