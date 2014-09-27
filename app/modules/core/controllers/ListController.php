@@ -14,7 +14,7 @@ use Mejili\Core\Models\CardList;
  */
 
 class ListController extends BaseController {
-    
+
     /**
 	 * Add new list to the board and set the postion 
      * of the list to the max + 1 on the board
@@ -24,19 +24,16 @@ class ListController extends BaseController {
     public function addList(){
         $boardid = Input::get('b');
         $title = Input::get('t');
-        $board = Board::find($boardid);
-        
+        $board = Board::find($boardid);        
         $list = new CardList();
-        $list->title = $title;
-        
+        $list->title = $title;        
         $maxPos = $board->lists()->max('position');
         $list->position = $maxPos + 1;
         $response['success'] = $board->lists()->save($list);
         $response['id'] = $list->id;
-                
         return Response::json($response);
     }
-    
+
     /**
 	 * Update the position of the list and 
      * return true if successful else return false
@@ -47,17 +44,19 @@ class ListController extends BaseController {
         $board = Board::find($boardid);
         $newPos = Input::get('np');
         $list = CardList::find(Input::get('lid'));
-        $this->placeListAtPosition($board, $newPos, $list);
-        
+        $this->placeListAtPosition($board, $list, $newPos);        
         $list->save();
-        $this->reorganizeBoard($board);
-        
-        
+        $this->reorganizeBoard($board);    
         $response['success'] = true;
         return Response::json($response);
     }
-    
-    private function placeListAtPosition($board, $newPos, $list){
+
+    /**
+	 * Place the moved list at the target postion 
+	 * @return void
+	 */
+
+    private function placeListAtPosition($board, $list, $newPos){
         if($list->position > $newPos){
             $this->makeSpaceTowardsLeft($board, $newPos);
             $list->position = $newPos - 2;
@@ -67,9 +66,14 @@ class ListController extends BaseController {
             $list->position = $newPos + 2 ;
         }
     }
-    
-    private function makeSpaceTowardsLeft($board, $pos){
-        
+
+    /**
+	 * Push all the lists having position less than the current
+     * to the left by decreasing their position value.
+	 * @return void
+	 */
+
+    private function makeSpaceTowardsLeft($board, $pos){        
         foreach($board->lists()->get() as $list){
             if($list->position <=   $pos){
                 $list->position = $list->position - 1;
@@ -77,7 +81,13 @@ class ListController extends BaseController {
             }
         }
     }
-    
+
+    /**
+	 * Push all the lists having position greater than the current
+     * to the right by increasing their position value.
+	 * @return void
+	 */
+
     private function makeSpaceTowardsRight($board, $pos){
         foreach($board->lists()->get() as $list){
             if($list->position >= $pos){
@@ -86,7 +96,13 @@ class ListController extends BaseController {
             }
         }
     }
-    
+
+    /**
+	 * Remove all the empty list positions in the board
+     * caused by moving the list.
+	 * @return void
+	 */
+
     private function reorganizeBoard($board){
         $position=0;
         foreach ($board->lists()->orderby('position')->get() as $list ){
