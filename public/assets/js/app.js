@@ -279,7 +279,7 @@ ko.bindingHandlers.uiSortableCards = {
     init: function (element, valueAccessor, allBindingsAccesor, context) {
         var $element = $(element);
         var list = valueAccessor();
-
+            
         $element.sortable({
             placeholder: "tasks-state-highlight",
             sort: function(event, ui){
@@ -306,15 +306,20 @@ ko.bindingHandlers.uiSortableCards = {
                 Mejili.CurrentBordViewModel.lists()[newList].cards().splice(newIndex, 0, moveCardSrc);                
                 var nid = Mejili.CurrentBordViewModel.lists()[newList].id();
 
-                $.ajax(serverRoot + '/api/b/list/card/update',{
+                $.ajax(serverRoot + '/api/b/list/card/updatePosition',{
                     data: '&nl='+nid + '&np=' + newIndex + '&cid=' + moveCardSrc.id(),
                     type: "post"                    
                 });
-
-
             },
             connectWith: ".sortable-card"
-
+        });
+        
+        $element.click(function(event){
+            
+            var list = ko.unwrap(valueAccessor());
+            
+            Mejili.CurrentBordViewModel.selectedCard = list[index];
+            $('#pwdModal').modal();
         });
     }
 };

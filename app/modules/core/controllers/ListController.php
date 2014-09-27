@@ -59,11 +59,11 @@ class ListController extends BaseController {
 
     private function placeListAtPosition($board, $list, $newPos){
         if($list->position > $newPos){
-            $this->makeSpaceTowardsLeft($board, $newPos);
+            $this->shifListstLeft($board, $newPos);
             $list->position = $newPos - 2;
         }
         else{
-            $this->makeSpaceTowardsRight($board, $newPos);
+            $this->shiftListsRight($board, $newPos);
             $list->position = $newPos + 2 ;
         }
     }
@@ -74,7 +74,7 @@ class ListController extends BaseController {
     * @return void
     */
 
-    private function makeSpaceTowardsLeft($board, $pos){        
+    private function shifListstLeft($board, $pos){        
         foreach($board->lists()->get() as $list){
             if($list->position <=   $pos){
                 $list->position = $list->position - 1;
@@ -89,7 +89,7 @@ class ListController extends BaseController {
     * @return void
     */
 
-    private function makeSpaceTowardsRight($board, $pos){
+    private function shiftListsRight($board, $pos){
         foreach($board->lists()->get() as $list){
             if($list->position >= $pos){
                 $list->position = $list->position + 1;
