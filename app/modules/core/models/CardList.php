@@ -13,10 +13,10 @@ class CardList extends Eloquent {
     protected $fillable = ['title', 'position', 'archived'];
     
     public function board(){
-        return $this->belongsTo('Board', 'board_id');
+        return $this->belongsTo('Mejili\Core\Models\Board', 'board_id');
     }
     
     public function cards(){
-        return $this->hasMany('Card', 'list_id');
+        return $this->hasMany('Mejili\Core\Models\Card', 'list_id');
     }
 }

@@ -14,14 +14,14 @@ class User extends VerifyUser {
 	protected $table = 'users';
 
 	public function boards(){
-        return $this->belongsToMany('Board', 'board_members', 'member_id', 'board_id')->withPivot('admin');
+        return $this->belongsToMany('Mejili\Core\Models\Board', 'board_members', 'member_id', 'board_id')->withPivot('admin');
     }
     
     public function boardActivities(){
-        return $this->hasMany('BoardActivity', 'member_id'); 
+        return $this->hasMany('Mejili\Core\Models\BoardActivity', 'member_id'); 
     }
     
     public function cards(){
-        return $this->belongsToMany('Card', 'card_members', 'member_id', 'card_id');
+        return $this->belongsToMany('Mejili\Core\Models\Card', 'card_members', 'member_id', 'card_id');
     }
 }

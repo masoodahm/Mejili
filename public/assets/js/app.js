@@ -136,9 +136,9 @@ window.Mejili = {
 
             var addCardWidgetExists = $(this).parent().children().hasClass('addcardWidget');
             $(this).css('display', 'none');
-            
+
             // hide all other card adder widgets.                        
-            
+
             if(!addCardWidgetExists){
                 var addCardWidget = document.createElement('div');
                 addCardWidget.className = 'row addcardWidget';
@@ -169,7 +169,7 @@ window.Mejili = {
                 btnCancel.innerHTML = 'Cancel';
                 btnCancel.style.marginLeft = '3px';
                 btnCancel.onclick = self.cancelCardWidgetAdder;
-                
+
                 btnContainer.appendChild(btnSave);
                 btnContainer.appendChild(btnCancel);
                 addCardWidget.appendChild(cardDescription);
@@ -308,7 +308,7 @@ ko.bindingHandlers.uiSortableCards = {
 
                 $.ajax(serverRoot + '/api/b/list/card/update',{
                     data: '&nl='+nid + '&np=' + newIndex + '&cid=' + moveCardSrc.id(),
-                    type: "post"
+                    type: "post"                    
                 });
 
 
@@ -354,7 +354,12 @@ ko.bindingHandlers.uiSortableLists = {
                 var b = document.getElementById('b').value;
                 $.ajax(serverRoot+'/api/b/list/updatePosition', {
                     data : 'b=' + b + '&np=' + newIndex + '&lid=' + moveListSrc.id(),
-                    type: "post"
+                    type: "post",
+                    success: function(data){
+                        if(data.success){
+                            moveListSrc.position = newIndex;
+                        }
+                    }
                 });              
             }
 

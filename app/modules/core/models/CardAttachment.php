@@ -9,10 +9,10 @@ class CardAttachment extends Eloquent {
     protected $table = 'card_attachments';
     
     public function card() {
-        return $this->belongsTo('Card');        
+        return $this->belongsTo('Mejili\Core\Models\Card');        
     }
     
     public function user() {
-        return $this->belongsTo('User');        
+        return $this->belongsTo('Mejili\Core\Models\User');        
     }
 }

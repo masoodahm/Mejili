@@ -9,10 +9,10 @@ class CardComment extends Eloquent {
     protected $table = 'card_comments';
     
     public function commenter(){
-        return $this->belongsTo('User', 'commenter_id');
+        return $this->belongsTo('Mejili\Core\Models\User', 'commenter_id');
     }
     
     public function card(){
-        return $this->belongsTo('Card', 'card_id');
+        return $this->belongsTo('Mejili\Core\Models\Card', 'card_id');
     }
 }

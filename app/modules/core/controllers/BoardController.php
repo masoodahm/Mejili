@@ -6,6 +6,12 @@ use View, Auth, Redirect, Input, Response;
 use Mejili\Core\Controllers\BaseController;
 use Mejili\Core\Models\Board;
 
+/**
+ * Board Controller: Responisble for all operations
+ * associated with boards
+ * @author Masood Ahmed <masoodahm@live.com>
+ */
+
 class BoardController extends BaseController {
 
     public function index($id){
@@ -36,7 +42,7 @@ class BoardController extends BaseController {
     public function getViewModel(){
         $boardId = Input::get('b');
         $board = Board::find($boardId);
-        $lists = $board->lists()->with('cards')->orderby('position')->get();
+        $lists = $board->lists()->with('cards')->get();
         $data['lists'] = $lists;
 
         return Response::json($data);

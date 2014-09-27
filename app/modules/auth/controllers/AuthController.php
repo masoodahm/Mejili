@@ -5,17 +5,14 @@ namespace Mejili\Auth\Controllers;
 use Redirect, View, Input, Auth;
 use Mejili\Core\Controllers\BaseController;
 
-class AuthController extends BaseController {
+/**
+ * Auth Controller: Responisble for all operations
+ * associated with user authentication
+ * @author Masood Ahmed <masoodahm@live.com>
+ */
 
-    /*
-	|--------------------------------------------------------------------------
-	| Auth Controller
-	|--------------------------------------------------------------------------
-	|
-	| This is a users controller responsible for creating, signing in and
-	| managing users
-	|
-	*/
+
+class AuthController extends BaseController {
 
     public function showLoginPage() {
 

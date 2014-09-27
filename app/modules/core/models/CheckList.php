@@ -9,10 +9,10 @@ class CheckList extends Eloquent {
     protected $table = 'card_checklists';
     
     public function card(){
-        return $this->belongsTo('Card', 'card_id');
+        return $this->belongsTo('Mejili\Core\Models\Card', 'card_id');
     }
     
     public function items(){
-        return $this->hasMany('CheckListItem', 'checklist_id');
+        return $this->hasMany('Mejili\Core\Models\CheckListItem', 'checklist_id');
     }
 }

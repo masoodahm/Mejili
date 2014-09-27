@@ -7,6 +7,12 @@ use Mejili\Core\Controllers\BaseController;
 use Mejili\Core\Models\Card;
 use Mejili\Core\Models\CardList;
 
+/**
+ * Card Controller: Responisble for all operations
+ * associated with cards.
+ * @author Masood Ahmed <masoodahm@live.com>
+ */
+
 class CardController extends BaseController {
     
     public function addCard(){        

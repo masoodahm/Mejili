@@ -36,13 +36,13 @@ Route::group(['before' => 'auth'], function()
         
         Route::post('b/view_model', ['as'=>'api_get_view_model' ,'uses'=>'Mejili\Core\Controllers\BoardController@getViewModel']);
         
-        Route::post('b/list/add_list', ['as'=>'api_add_list' ,'uses'=>'ListController@addList']);
+        Route::post('b/list/add_list', ['as'=>'api_add_list' ,'uses'=>'Mejili\Core\Controllers\ListController@addList']);
         
-        Route::post('b/list/card/add_card', ['as'=>'api_get_add_card' ,'uses'=>'CardController@addCard']);
+        Route::post('b/list/card/add_card', ['as'=>'api_get_add_card' ,'uses'=>'Mejili\Core\Controllers\CardController@addCard']);
                 
-        Route::post('b/list/card/update', ['as'=>'api_get_update_card' ,'uses'=>'CardController@updateCard']);
+        Route::post('b/list/card/update', ['as'=>'api_get_update_card' ,'uses'=>'Mejili\Core\Controllers\CardController@updateCard']);
         
-        Route::post('b/list/updatePosition', 'ListController@updatePosition');
+        Route::post('b/list/updatePosition', 'Mejili\Core\Controllers\ListController@updatePosition');
         
         // only for development
         // Route::get('b/view_model', ['as'=>'api_get_view_model' ,'uses'=>'BoardController@getViewModel']);
