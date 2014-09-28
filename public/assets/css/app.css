@@ -38,7 +38,7 @@ ul{
     overflow: hidden;
     padding: 0 10px 0 0;
     position: relative;
-    
+
 
 }
 
@@ -145,11 +145,11 @@ ul{
     padding-right: 7px;    
     padding-top: 4px;
     padding-bottom: 4px;
-    
+
     margin: 0px;
     margin-bottom: 7px;
     border-radius: 3px;
-    
+
 }
 .card:hover{
     background-color: #f9f9f9;
@@ -157,7 +157,7 @@ ul{
 
 .addcardButton{    
     padding-left: 14px;
-    
+
     padding-left: 14px;
     /*padding-bottom: 5px;
     padding-top: 5px;*/    
@@ -173,16 +173,6 @@ ul{
     background-color: fbfbf9;
     cursor: pointer;
 }
-/* Without border
-
-.card{
-padding-left: 7px;
-padding-right: 7px;    
-background-color: #fafafa;
-}
-.card:hover{
-background-color: #fefefe;
-}*/
 
 .list-adder{
     cursor: pointer;
@@ -290,9 +280,52 @@ background-color: #fefefe;
 
 .navbar-brand {
     padding-top: 8px;
-    
+
 }
 .navbar-nav > li > a {
     padding-bottom: 8px;
     padding-top: 8px;
+}
+
+.modal-header .close {
+    margin-top: -4px;
+    padding-left: 30px;
+}
+
+.modal-title {
+    font-size: 20px;
+    line-height: 1.2em;
+    margin: 0 0 9px;
+    display: inline;
+    text-overflow: ellipsis;
+}
+
+.modal-header span{
+    color: #7c7c7c;
+    text-overflow: ellipsis;
+}
+
+
+.list-title{
+    font-weight: bold;
+}
+
+.header-icon{
+    font-size: 22px;
+    height: 30px;
+    line-height: 30px;
+    width: 30px;
+    top: 5px;
+    color: #acacac !important;
+}
+
+.modal-content hr{
+    margin: 0px;
+}
+
+.form-group{
+    margin-bottom: 0px;    
+}
+.modal-footer{
+    margin-top: 0px;
 }

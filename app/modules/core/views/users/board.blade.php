@@ -12,7 +12,7 @@
 </div>
 @stop
 @section('content')
-<div class="board">
+<div class="board" id="board">
     <input type="hidden" value="{{$id}}" id="b"/>
     <div class="list-container">
         <ul class="sortable-list" data-bind = "foreach: lists, uiSortableLists: lists">
@@ -49,36 +49,37 @@
         </div>
     </div>
 </div>
-    <div class="modal fade" id="pwdModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
+<div class="modal" id="pwdModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" id="modal-dialog">
         <div class="modal-content">
-          <form id ="frmChngPwd" class="form-horizontal" role="form" method="post" action="">
-            {{--Form::open(['route' => 'changePwd', 'method' => 'post', 'class' => 'form-horizontal', 'id'=> 'frmChngPwd'])--}}
-               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Change Password</h4>
-              </div>
-              <div class="modal-body">
-                   <div class="form-group">
-                        <label for="pwd" class="col-sm-4 control-label">New Password</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" name="password" id="pwd" placeholder="New Password">
+            <div class="form-horizontal" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove"><span></button>
+                        <span class="header-icon glyphicon glyphicon-credit-card"></span> <div class="modal-title" data-bind="text: title">Change Password</div> <span> in list </span> <span class="list-title" data-bind="text: parentTitle"></span>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="cmPwd" class="col-sm-4 control-label">Confirm Password</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" name="confirm_password" id="cmPwd" placeholder="Confirm Password">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="pwd" class="col-sm-4 control-label">New Password</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" name="password" id="pwd" placeholder="New Password">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Change</button>
-              </div>
-            {{Form::close()}}
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-@stop
+                        <hr/>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="cmPwd" class="col-sm-4 control-label">Confirm Password</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" name="confirm_password" id="cmPwd" placeholder="Confirm Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Change</button>
+                        </div>
+                        </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        @stop

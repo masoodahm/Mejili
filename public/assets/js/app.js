@@ -9,12 +9,10 @@ var self;
 window.Mejili = {
     initialize : function(){
         self = this;
-
         self.setPreferredContainerHeight();
         self.setWindowMaxWidth();
         self.setBoardDragable();
         self.setupListAdder();
-
         self.getDataFromServer();        
     },
 
@@ -244,7 +242,6 @@ window.Mejili = {
         $.ajax(serverRoot+'/api/b/view_model',{
             data: 'b='+ boardId,
             type: "post",
-            //contentType: "application/json",
             success: self.onServerDataReceive 
         });
     },
@@ -253,7 +250,8 @@ window.Mejili = {
 
         self.sortByPosition(data);
         Mejili.CurrentBordViewModel = ko.mapping.fromJS(data);
-        ko.applyBindings(Mejili.CurrentBordViewModel);
+        var board = document.getElementById('board');
+        ko.applyBindings(Mejili.CurrentBordViewModel, board);
         self.setupCardAdder();
         self.setPreferredContainerWidth();
     },
@@ -279,7 +277,7 @@ ko.bindingHandlers.uiSortableCards = {
     init: function (element, valueAccessor, allBindingsAccesor, context) {
         var $element = $(element);
         var list = valueAccessor();
-            
+
         $element.sortable({
             placeholder: "tasks-state-highlight",
             sort: function(event, ui){
@@ -313,16 +311,21 @@ ko.bindingHandlers.uiSortableCards = {
             },
             connectWith: ".sortable-card"
         });
-        
+
         $element.click(function(event){
-            
+            if(event.target == event.currentTarget) return;
             var list = ko.unwrap(valueAccessor());
+            var index = $(event.currentTarget).children().index($(event.target).parent());
+            var dialog = document.getElementById('modal-dialog');
+            dialogViewModel = list[index];
+            dialogViewModel.parentTitle = context.title;
             
-            Mejili.CurrentBordViewModel.selectedCard = list[index];
+            ko.cleanNode(dialog);
+            ko.applyBindings(dialogViewModel, dialog);
             $('#pwdModal').modal();
         });
     }
-};
+}; 
 
 ko.bindingHandlers.uiSortableLists = {
     init: function (element, valueAccessor, allBindingsAccesor, context) {
@@ -372,6 +375,7 @@ ko.bindingHandlers.uiSortableLists = {
     }
 };
 
+
 Mejili.CardViewModel = function(){
     this.title = ko.observable();
     this.color = ko.observable();
@@ -387,9 +391,7 @@ Mejili.ListViewModel = function (){
     this.cards = ko.observableArray();
 }
 
-
 $(document).ready(function(){
     Mejili.initialize();
     window.onresize = Mejili.onWindowResize;    
-    //$('#pwdModal').modal(); 
 });

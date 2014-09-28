@@ -34,7 +34,13 @@ class CardController extends BaseController {
         $response['id'] = $card->id;        
         return Response::json($response);
     }
-
+    
+    /**
+    * Update position of the card and 
+    * return true if successful else return false
+    * @return Boolean
+    */
+    
     public function updatePosition(){
         $cardId = Input::get('cid');        
         $card = Card::find($cardId);
@@ -52,6 +58,12 @@ class CardController extends BaseController {
         $list->cards()->save($card);    
         $this->reorganizeList($previousList);        
     }
+    
+    /**
+    * Make space for a card by moving rest of the cards 
+    * up or down.
+    * @return void
+    */
 
     private function makeSpaceInListAt($list, $card, $newPos){
         if($card->position < $newPos){
@@ -62,6 +74,12 @@ class CardController extends BaseController {
         }
     }
 
+    /**
+    * Push all the cards up having position less than 
+    * the current by decreasing their position value.
+    * @return void
+    */
+    
     private function shiftCardsUp($list, $pos){
         foreach($list->cards()->get() as $card){
             if($card->position <= $pos){
@@ -71,6 +89,12 @@ class CardController extends BaseController {
         }
     }
 
+    /**
+    * Push all the cards down having position less than 
+    * the current by decreasing their position value.
+    * @return void
+    */
+    
     private function shiftCardsDown($list, $pos){
         foreach($list->cards()->get() as $card){
             if($card->position >= $pos){
@@ -80,6 +104,12 @@ class CardController extends BaseController {
         }
     }
 
+    /**
+    * Remove all the empty card positions in the board
+    * caused by moving the cards.
+    * @return void
+    */
+    
     private function reorganizeList($list){
         $position=0;
         foreach ($list->cards()->orderby('position')->get() as $card ){
