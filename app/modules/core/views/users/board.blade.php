@@ -19,16 +19,26 @@
             <li class="list col-xs-3">
                 <div class="widget">
                     <div class="widget-head border-bottom bg-gray dragable-object">
-                        <h5 class="innerAll pull-left margin-none" data-bind="text: title"></h5>
-                        <div class="pull-right">
+                        <div class="innerAll pull-left margin-none widget-title" >
+                            <div class="title-text" data-bind="text: title"></div>
+                            <input class="hide title-input" id="titleInput" data-bind="value: title, valueUpdate: 'keypress'" 
+                                   onblur="Mejili.hideTitleInput(event)" onkeyup="Mejili.listTitleKeyUp(event)" />
+                        </div>                        
+                        <div class="pull-right ctx-menu-target">
                             <a class="text-muted" href="#">    
                                 <i class="fa fa-toggle-down innerL"></i>
                             </a>
                         </div>
                     </div>
                     <div class="widget-body">
+                        <div class="context-menu hide">
+                            <div name="add-card">Add Card</div>
+                            <div name="delete" class="delete">Delete List</div>
+
+                        </div>
                         <ul data-bind="foreach: cards, uiSortableCards: cards"  class="sortable-card">
-                            <li class="row dragable-object card" data-bind="css: color"> 
+                            <li class="row dragable-object card"> 
+                                <div class="card-color" data-bind="css: color"></div>
                                 <div data-bind="text: title"></div>
                             </li>
                         </ul>
@@ -55,31 +65,49 @@
             <div class="form-horizontal" role="form">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="fa fa-remove"><span></button>
-                        <span class="header-icon glyphicon glyphicon-credit-card"></span> <div class="modal-title" data-bind="text: title">Change Password</div> <span> in list </span> <span class="list-title" data-bind="text: parentTitle"></span>
+                        <span class="header-icon fa fa-credit-card"></span> 
+                        <span data-bind="click: Mejili.cardTitleClick" id="cardTitle"> <div class="modal-title" data-bind="text: title"></div> <span> in list </span> <span class="list-title" data-bind="text: parentTitle"></span></span>
+                        <span class="hide" id="cardTitleInputParent"> <input type="text" class="cardTitleInput" data-bind="value: title, event: {blur: Mejili.cardTitleBlur, keyup:Mejili.cardTitleKeyUp }"> </span>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="pwd" class="col-sm-4 control-label">New Password</label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control" name="password" id="pwd" placeholder="New Password">
+                        <div class="modal-body row">
+                            <div class="dialog-content card-desc desc-btn col-sm-8" data-bind="css: {hide: description().length > 0}, click: Mejili.descBtnClick">
+                                <span class="fa fa-align-left desc-icon"></span>Edit the description... 
+                            </div>
+                            <div class="dialog-content col-sm-8 card-desc" data-bind="css: {hide: description().length < 1}">
+                                <span class="dialog-desc desc-label">Description</span> <span data-bind="click: Mejili.descBtnClick" class="text-btn desc-label">Edit</span>
+                                <div class="dialog-desc" data-bind="text: description, click: Mejili.descBtnClick" ></div>
+                            </div>
+                            <div class="dialog-content col-sm-8 hide" id="cardDesc">
+                                <textarea cols="40" rows="5" class="max-width" data-bind="value: description" ></textarea>                                
+                            </div>
+                            <div class="col-sm-3 pull-right">
+                                <div class="window-options">
+                                    <div class="dialog-sub-head">Add</div>
+                                    <div class="btn btn-default max-width option-btn " id="cardColor">
+                                        <span class="fa fa-tag option-icon"></span> Color <span class="fa fa-stop option-icon color-box" data-bind="css: color"></span>
+                                    </div>
+                                </div>
+
+                                <div class="window-options">
+                                    <div class="dialog-sub-head">Actions</div>
+                                    <div class="btn btn-default max-width option-btn" name="card-delete" data-bind="click: Mejili.deleteCard">
+                                        <span class="glyphicon glyphicon-remove option-icon"></span> Delete
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <hr/>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="cmPwd" class="col-sm-4 control-label">Confirm Password</label>
-                                <div class="col-sm-8">
-                                    <input type="password" class="form-control" name="confirm_password" id="cmPwd" placeholder="Confirm Password">
-                                </div>
+                            <div class="labels-menu hide">
+                                <div class="colors-menu red" name="red" data-bind="click: Mejili.selectCardColor, css: {'glyphicon glyphicon-ok color-selected' :(color()=='red')}"></div>
+                                <div class="colors-menu blue" name="blue" data-bind="click: Mejili.selectCardColor, css: {'glyphicon glyphicon-ok color-selected' :(color()=='blue')}"></div>
+                                <div class="colors-menu green" name="green" data-bind="click: Mejili.selectCardColor, css: {'glyphicon glyphicon-ok color-selected' :(color()=='green')}"></div>
+                                <div class="colors-menu yellow" name="yellow" data-bind="click: Mejili.selectCardColor, css: {'glyphicon glyphicon-ok color-selected' :(color()=='yellow')}"></div>
+                                <div class="colors-menu purple" name="purple" data-bind="click: Mejili.selectCardColor, css: {'glyphicon glyphicon-ok color-selected' :(color()=='purple')}"></div>
+                                <div class="colors-menu orange" name="orange" data-bind="click: Mejili.selectCardColor, css: {'glyphicon glyphicon-ok color-selected' :(color()=='orange')}"></div>                               
+                                <div class="colors-menu"><a href="#" name="" data-bind="click: Mejili.selectCardColor">Remove</a></div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Change</button>
                         </div>
                         </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
         @stop

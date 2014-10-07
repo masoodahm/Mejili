@@ -3,7 +3,7 @@
 
 namespace Mejili\Content\Controllers;
 
-use Redirect;
+use Redirect, Response;
 use Mejili\Core\Controllers\BaseController;
 
 class HomeController extends BaseController {
@@ -28,5 +28,8 @@ class HomeController extends BaseController {
         
         return Redirect::route('boards');
 	}        
-
+    
+    public function dummy(){
+        return Response::json(['done'=>'done']);
+    }
 }

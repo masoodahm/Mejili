@@ -51,7 +51,33 @@ class ListController extends BaseController {
         $response['success'] = true;
         return Response::json($response);
     }
-
+    
+    /**
+     * Delete the specified list.
+     * @returns Boolean success status.
+     */
+    public function deleteList(){
+        $listId = Input::get('lid');
+        $list = CardList::find($listId);
+        foreach($list->cards as $card){
+            $card->delete();
+        }
+        $response['success'] = $list->delete();
+        return Response::json($response);
+    }
+    
+    /**
+     * Change the title of the card
+     * @returns Boolean success status.
+     */
+    public function setTitle(){
+        $title = Input::get('lTitle');
+        $list = CardList::find(Input::get('lid'));
+        $list->title = $title;
+        $response['success'] = $list->save();
+        return Response::json($response);        
+    }
+    
     /**
     * Place the moved list at the target postion 
     * @return void

@@ -1,5 +1,5 @@
 
-@extends('content::layouts.users.default')
+@extends('content::layouts.guest.default')
 @section('content')
 
 <div class="container login-box-width">

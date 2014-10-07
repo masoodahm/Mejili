@@ -30,17 +30,20 @@ class CardController extends BaseController {
         $card = new Card();
         $card->title = $title;
 
+        $maxPos = $list->cards()->max('position');
+        $card->position = $maxPos + 1;
+
         $response['success'] = $list->cards()->save($card);
         $response['id'] = $card->id;        
         return Response::json($response);
     }
-    
+
     /**
     * Update position of the card and 
     * return true if successful else return false
     * @return Boolean
     */
-    
+
     public function updatePosition(){
         $cardId = Input::get('cid');        
         $card = Card::find($cardId);
@@ -55,10 +58,57 @@ class CardController extends BaseController {
             $this->shiftCardsDown($list, $newPos);            
         }        
         $card->position = $newPos;
-        $list->cards()->save($card);    
+        $response['success'] = $list->cards()->save($card);    
         $this->reorganizeList($previousList);        
+        return Response::json($response);
     }
     
+    /**
+     * Change the color of the card 
+     * @returns Boolean success status.
+     */
+    public function setColor(){
+        $color = Input::get('clr');
+        $card = Card::find(Input::get('cid'));
+        $card->color = $color;
+        $response['success'] = $card->save();
+        return Response::json($response);   
+    }
+    
+    /**
+     * Delete the specified card
+     * @returns Boolean success status.
+     */
+    public function deleteCard(){
+        $card = Card::find(Input::get('cid'));        
+        $response['success'] = $card->delete();
+        return Response::json($response);        
+    }
+    
+    /**
+     * Update the card title property
+     * @returns Boolean success.
+     */
+    public function updateTitle(){
+        $card = Card::find(Input::get('cid'));
+        $title = Input::get('cardTitle');        
+        $card->title = $title;
+        $response['success'] = $card->save();
+        return Response::json($response);       
+    }
+    
+    /**
+     * Update the card description property
+     * @returns Boolean success.
+     */
+    public function updateDescription(){
+        $card = Card::find(Input::get('cid'));
+        $desc = Input::get('cardDesc');        
+        $card->description = $desc;
+        $response['success'] = $card->save();
+        return Response::json($response);       
+    }
+
     /**
     * Make space for a card by moving rest of the cards 
     * up or down.
@@ -79,7 +129,7 @@ class CardController extends BaseController {
     * the current by decreasing their position value.
     * @return void
     */
-    
+
     private function shiftCardsUp($list, $pos){
         foreach($list->cards()->get() as $card){
             if($card->position <= $pos){
@@ -94,7 +144,7 @@ class CardController extends BaseController {
     * the current by decreasing their position value.
     * @return void
     */
-    
+
     private function shiftCardsDown($list, $pos){
         foreach($list->cards()->get() as $card){
             if($card->position >= $pos){
@@ -109,7 +159,7 @@ class CardController extends BaseController {
     * caused by moving the cards.
     * @return void
     */
-    
+
     private function reorganizeList($list){
         $position=0;
         foreach ($list->cards()->orderby('position')->get() as $card ){

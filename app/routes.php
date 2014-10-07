@@ -12,6 +12,8 @@
 */
 
 Route::get('/', ['as'=> 'home', 'uses'=> 'Mejili\Content\Controllers\HomeController@showWelcome']);
+Route::post('save', 'Mejili\Content\Controllers\HomeController@dummy');
+
 
 Route::group(['before' => 'guest'], function()
 {
@@ -43,6 +45,19 @@ Route::group(['before' => 'auth'], function()
         Route::post('b/list/card/updatePosition', ['as'=>'api_get_update_card' ,'uses'=>'Mejili\Core\Controllers\CardController@updatePosition']);
         
         Route::post('b/list/updatePosition', 'Mejili\Core\Controllers\ListController@updatePosition');
+        
+        Route::post('b/list/delete', 'Mejili\Core\Controllers\ListController@deleteList');
+        
+        Route::post('b/list/card/setColor', 'Mejili\Core\Controllers\CardController@setColor');
+        
+        Route::post('b/list/card/delete', 'Mejili\Core\Controllers\CardController@deleteCard');
+        
+        Route::post('b/list/setTitle', 'Mejili\Core\Controllers\ListController@setTitle');
+        
+        Route::post('b/list/card/updateDescription', 'Mejili\Core\Controllers\CardController@updateDescription');
+        
+        Route::post('b/list/card/updateTitle', 'Mejili\Core\Controllers\CardController@updateTitle');
+        
         
         // only for development
         // Route::get('b/view_model', ['as'=>'api_get_view_model' ,'uses'=>'BoardController@getViewModel']);

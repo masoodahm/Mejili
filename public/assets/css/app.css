@@ -42,16 +42,16 @@ ul{
 
 }
 
-.widget .widget-head h5{
+.widget .widget-head .widget-title{
     display: inline;
     font-size: 15px;
     line-height: 18px;
     margin: 0;
     min-height: 19px;
-    min-width: 30px;
-    overflow: hidden;
+    min-width: 30px; 
     text-overflow: ellipsis;
-    word-wrap: break-word;
+    max-width: 90%;
+    max-height: 18px;
 }
 
 .widget {
@@ -94,9 +94,8 @@ ul{
     padding-right: 7px;    
 }
 
-.list-container>.tasks-state-highlight{
-    /*width: 300px;   */
-}
+/* ----------------------*/
+
 .elem-dragged{
     transform: rotate(4deg);    
 }
@@ -114,11 +113,6 @@ ul{
 .col-xs-3 {
     width:  270px;
 }
-
-.widget ul li.row{
-    /*margin: 0px;*/
-}
-
 
 .dragable-object{
     cursor: -webkit-grab; cursor: -moz-grab;
@@ -142,8 +136,7 @@ ul{
 .card{
     border: 1px solid #f0f0f0;
     padding-left: 7px;
-    padding-right: 7px;    
-    padding-top: 4px;
+    padding-right: 7px;        
     padding-bottom: 4px;
 
     margin: 0px;
@@ -209,7 +202,7 @@ ul{
     max-height: 150px;
 }
 
-.label-red{
+/*.label-red{
     border-top: 3px solid #ef7777;
 
 }
@@ -232,7 +225,7 @@ ul{
 }
 .label-purple{
     border-top: 3px solid #ef55ef;
-}
+}*/
 
 .login-box {
     background-color: #f1f1f1;
@@ -305,7 +298,6 @@ ul{
     text-overflow: ellipsis;
 }
 
-
 .list-title{
     font-weight: bold;
 }
@@ -323,9 +315,195 @@ ul{
     margin: 0px;
 }
 
-.form-group{
+.modal-content .form-group{
     margin-bottom: 0px;    
 }
 .modal-footer{
     margin-top: 0px;
+}
+.desc-btn {
+    text-decoration: underline;
+    color: #7c7c7c;
+    border-radius: 3px;
+}
+
+.desc-btn:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.desc-btn .desc-icon{    
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+.title-input{
+    height: auto;
+    line-height: normal;
+    margin: 5px;    
+}
+
+.title-text{
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
+}
+.context-menu{
+    position: absolute;
+    top: 30px;
+    left: 235px;
+    z-index: 1000;
+    background: white;
+    width: 120px;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+
+.context-menu div{
+    padding: 5px;
+}
+
+.context-menu div:hover{
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Bootstrap class override*/
+
+.dropdown-menu{
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+
+/*-----------end-------------*/
+
+.dialog-content{
+    margin-left: 25px;
+}
+
+.dialog-content .dialog-desc{
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+.desc-label{
+    color: #7c7c7c;
+}
+.max-width{
+    width: 100%;
+}
+.dialog-sub-head {
+    font-size: 16px;
+    line-height: 1.25em;
+    margin: 0 0 6px;
+}
+
+.window-options {
+    clear: both;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.option-icon{
+    color: #a6a6a6;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 400;
+    top: 1px;
+    text-decoration: none;
+    margin-right: 8px;
+    line-height: normal;
+}
+.option-btn{
+    white-space: nowrap;
+    text-align: left;
+}
+
+.color-box{    
+    margin-left: 8px;
+}
+
+.colors-menu{
+    height: 18px;
+    width: 80px;
+    margin: 3px;
+    border-radius: 3px;
+}
+
+.colors-menu:hover{
+    width: 90px;
+    cursor: pointer;
+}
+
+.labels-menu{
+    position: absolute;
+    top: 78px;
+    left: 475px;
+    z-index: 1000;
+    background: white;
+    width: 120px;    
+    border-radius: 3px;
+    padding: 5px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+
+.red{
+    background-color: #ef7777;
+    color: #ef7777;
+}
+
+.green{
+    background-color: #77ef77;
+    color: #77ef77;
+}
+
+.blue{
+    background-color: #7777ef;
+    color: #7777ef;
+}
+
+.yellow{
+    background-color: #efef77;
+    color: #efef77;
+}
+
+.orange{
+    background-color: #ef9811;
+    color: #ef9811;
+}
+
+.purple{
+    background-color: #ef55ef;
+    color: #ef55ef;
+}
+
+.gray{
+    background-color: #a6a6a6;
+    color: #a6a6a6;
+}
+
+.card-color{
+    height: 3px;
+    margin-bottom: 2px;
+}
+
+.color-selected{
+    color: white;
+    text-align: right;
+    width: 95%;
+    margin-right: 15px;
+    padding-right: 10px;
+}
+.max-width{
+    max-width: 100%;
+}
+.text-btn{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.cardTitleInput{
+    font-size: 20px;
+    line-height: 1.2em;
+    width: 80%;
 }
