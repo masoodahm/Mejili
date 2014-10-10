@@ -29,7 +29,7 @@ class CardController extends BaseController {
         $list = CardList::find($listId);
         $card = new Card();
         $card->title = $title;
-
+        $card->description = '';
         $maxPos = $list->cards()->max('position');
         $card->position = $maxPos + 1;
 
