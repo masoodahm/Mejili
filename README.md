@@ -8,7 +8,7 @@ Mejili stands for "Magical Lean".
 
 Demo
 ----
-Demo site is temporarily down for maintenance
+Demo site is available [here](zaittoon.com/demo)
 
 username: admin
 
