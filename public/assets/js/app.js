@@ -1,8 +1,8 @@
 // Only for Development
-var serverRoot = 'http://localhost/Mejili/public';
+//var serverRoot = 'http://localhost/Mejili/public';
 //==================================================
 
-//var serverRoot = '';
+var serverRoot = '';
 //var serverRoot = 'http://192.168.0.100/Mejili/public';
 
 var self;
@@ -153,7 +153,7 @@ window.Mejili = {
                 if(keyCode == 27){
                     self.hideCardAdderWidget($(target));   
                 }
-            }
+            };
             var btnContainer = document.createElement('div');
             var btnSave = document.createElement('button');
             btnSave.className = 'btn btn-default widgetButton';
@@ -387,13 +387,15 @@ window.Mejili = {
     setCardColorsMenu: function(){
         var btn = document.getElementById('cardColor');
         btn.onclick = function(event){
-            $('.labels-menu').toggleClass('hide');
+            $('.labels-menu').toggleClass('hide');            
         };
     },
 
     selectCardColor: function(card, event){
         var color = event.target.attributes['name'].value;
         card.color(color);
+        var colorDropDown = $(event.target).parent();
+        colorDropDown.addClass('hide');
         $.ajax(serverRoot + '/api/b/list/card/setColor', {
             data: 'cid=' + card.id() + '&clr=' + color,
             type: 'post'
@@ -551,16 +553,16 @@ Mejili.CardViewModel = function(){
     this.title = ko.observable();
     this.color = ko.observable('');
     this.description = ko.observable('');
-}
+};
 
 Mejili.BoardViewModel = function(){
     this.lists = ko.observableArray();
-}
+};
 
 Mejili.ListViewModel = function (){
     this.title = ko.observable();
     this.cards = ko.observableArray();
-}
+};
 
 $(document).ready(function(){
     Mejili.initialize();

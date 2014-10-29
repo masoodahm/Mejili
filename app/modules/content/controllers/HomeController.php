@@ -22,10 +22,7 @@ class HomeController extends BaseController {
 	*/
 
 	public function showWelcome()
-	{
-		//return \View::make('content::hello');
-        // for testing only done temporarily
-        
+	{		
         return Redirect::route('boards');
 	}        
     
