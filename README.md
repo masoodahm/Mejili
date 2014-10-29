@@ -11,6 +11,7 @@ Demo
 Demo site is available [here](http://zaittoon.com/demo/)
 
 username: admin
+
 password: password
 
 ![Screenshot](/public/assets/images/screenshot.png)
