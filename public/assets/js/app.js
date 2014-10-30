@@ -394,7 +394,7 @@ window.Mejili = {
     selectCardColor: function(card, event){
         var color = event.target.attributes['name'].value;
         card.color(color);
-        var colorDropDown = $(event.target).parent();
+        var colorDropDown = $('.labels-menu');
         colorDropDown.addClass('hide');
         $.ajax(serverRoot + '/api/b/list/card/setColor', {
             data: 'cid=' + card.id() + '&clr=' + color,
