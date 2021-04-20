@@ -1,3 +1,7 @@
+###Note
+========
+This repos is not being maintained or developed anymore hence its readonly
+
 Mejili
 ======
 
